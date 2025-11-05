@@ -1,4 +1,3 @@
-from Entitati.Nota import Nota
 from Entitati.ProblemaLaborator import ProblemaLaborator
 from Entitati.Student import Student
 from Repository.RepoLab import RepoLab

@@ -24,6 +24,6 @@ class serviceStudent:
 
     def update_student(self, student_id, nume, grupa):
         student = self.__RepoStudent.getStudentById(student_id)
-        self.__RepoStudent.deleteStudent(student)
+        self.__RepoStudent.deleteStudent(student.get_student_id())
         studentUpdate = Student(student_id, nume, grupa)
         self.__RepoStudent.addStudent(studentUpdate)

@@ -29,9 +29,9 @@ class UI:
     def run(self):
         while True:
             self.meniu()
-            opțiune = int(input("Introduceti optiunea dorita: "))
+            optiune = int(input("Introduceti optiunea dorita: "))
             
-            match opțiune:
+            match optiune:
                 case 1:
                     self.AdaugaunStudent()
                 case 2:
@@ -114,7 +114,7 @@ class UI:
         numar_problema = int(input("Numar problema de laborator: "))
         descriere = input("Descriere laborator: ")
         deadline = input("Deadline laborator: ")
-        laborator = self.__serviceLab.update_problema(numar_lab,numar_problema,descriere,deadline)
+        self.__serviceLab.update_problema(numar_lab,numar_problema,descriere,deadline)
         print("Laboratorul a fost update cu succes!")
 
     def CautaunStudent(self):

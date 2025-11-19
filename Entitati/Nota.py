@@ -9,9 +9,13 @@ class Nota:
         self.__nota = nota
 
     def get_nota(self):
+        if self.__nota < 0 or self.__nota > 10:
+            raise ValueError("Nota invalida!")
         return self.__nota
 
     def set_nota(self, nota):
+        if nota < 0 or nota > 10:
+            raise ValueError("Nota invalida!")
         self.__nota = nota
 
     def __str__(self):

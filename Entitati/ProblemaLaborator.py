@@ -6,6 +6,7 @@ class ProblemaLaborator:
         self.__deadline = deadline
 
     def get_numar_laborator(self):
+
         return self.__numar_laborator
 
     def get_numar_problema(self):
@@ -18,9 +19,13 @@ class ProblemaLaborator:
         return self.__deadline
 
     def set_numar_laborator(self,numar_laborator):
+        if numar_laborator < 0:
+            raise ValueError("Numar laborator invalid!")
         self.__numar_laborator = numar_laborator
 
     def set_numar_problema(self,numar_problema):
+        if numar_problema < 0:
+            raise ValueError("Numar problema invalid!")
         self.__numar_problema = numar_problema
 
     def set_descriere(self,descriere):

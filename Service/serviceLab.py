@@ -9,7 +9,7 @@ class ServiceLab:
         problema = ProblemaLaborator(numar_lab,numar_problema, descriere, deadline)
         self.__RepoLab.addLab(problema)
 
-    def sterge_problema(self, numar_lab):
+    def sterge_problema(self, numar_lab: int):
         self.__RepoLab.deleteLab(numar_lab)
 
     def get_toate_problemele(self):
@@ -22,5 +22,3 @@ class ServiceLab:
     def update_problema(self, numar_lab, numar_problema ,descriere, deadline):
         self.__RepoLab.updateLab(numar_lab,numar_problema, descriere, deadline)
 
-    def cauta_id(self, numar_lab):
-         self.__RepoLab.find_id(numar_lab)

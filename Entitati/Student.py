@@ -5,6 +5,8 @@ class Student:
         self.__grupa = grupa
 
     def get_student_id(self):
+        if self.__student_id < 0:
+            raise ValueError("Student ID invalid!")
         return self.__student_id
 
     def get_nume(self):
@@ -14,7 +16,10 @@ class Student:
         return self.__grupa
 
     def set_student_id(self,student_id):
+        if student_id < 0:
+            raise ValueError("Student ID invalid!")
         self.__student_id = student_id
+
 
     def set_nume(self,nume):
         self.__nume = nume
@@ -27,4 +32,3 @@ class Student:
 
     def __repr__(self):
         return f"Student(student_id={self.__student_id}, nume={self.__nume}, grupa={self.__grupa})"
-

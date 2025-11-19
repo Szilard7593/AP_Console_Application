@@ -31,3 +31,7 @@ class TestStudent(TestCase):
         student = Student(1, "Mihai", 321)
         student.set_grupa(456)
         assert student.get_grupa() == 456
+
+    def testExceptie(self):
+        student = Student(-1, "Mihai", 321)
+        #assert student.get_student_id() == "Student ID invalid!"

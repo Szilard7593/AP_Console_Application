@@ -21,8 +21,6 @@ class UI:
        print("10.Cauta o problema de laborator")
        print("20.Noteaza un student: ")
        print("21.Arata toate notele studentilor:")
-
-       print("11.Toti studentii cu media notelor de la lab mai mica de 5")
        print("24.Lista de studenți și notele lor la o problema de laborator data, ordonata: alfabetic după nume, după notă.")
        print("13.Exit")
 
@@ -68,20 +66,25 @@ class UI:
 
 
     def AdaugaunStudent(self):
-        id = int(input("ID Student:  "))
-        nume = input("Nume student: ")
-        grupa = input("Grupa student: ")
-        self.__serviceStudent.adauga_student(id,nume,grupa)
-        print("Studentul a fost adaugat cu succes!")
+        try:
+            id = int(input("ID Student:  "))
+            nume = input("Nume student: ")
+            grupa = input("Grupa student: ")
+            self.__serviceStudent.adauga_student(id,nume,grupa)
+            print("Studentul a fost adaugat cu succes!")
+        except Exception as e:
+            print(e)
 
     def AdaugaunLaborator(self):
-        id_lab = int(input("ID Laborator:  "))
-        problema_lab = int(input("Problema laborator: "))
-        descriere = input("Descriere laborator: ")
-        deadline = input("Deadline laborator: ")
-        self.__serviceLab.adauga_problema(id_lab,problema_lab,descriere ,deadline)
-        print("Laboratorul a fost adaugat cu succes!")
-
+        try:
+            id_lab = int(input("ID Laborator:  "))
+            problema_lab = int(input("Problema laborator: "))
+            descriere = input("Descriere laborator: ")
+            deadline = input("Deadline laborator: ")
+            self.__serviceLab.adauga_problema(id_lab,problema_lab,descriere ,deadline)
+            print("Laboratorul a fost adaugat cu succes!")
+        except Exception as e:
+            print(e)
     def AfiseazaStudenti(self):
         studenti = self.__serviceStudent.get_toti_studentii()
         for student in studenti:
@@ -93,47 +96,70 @@ class UI:
             print(laborator)
 
     def StergeunStudent(self):
-        id = int(input("ID Student:  "))
-        self.__serviceStudent.sterge_student(id)
-        print("Studentul a fost sterget cu succes!")
+        try:
+            id = int(input("ID Student:  "))
+            self.__serviceStudent.sterge_student(id)
+        except Exception as e:
+            print(e)
 
     def stergeunLaborator(self):
-        numar_problema = int(input("Numar problema:  "))
-        self.__serviceLab.sterge_problema(numar_problema)
-        print("Laboratorul a fost sterget cu succes!")
+        try:
+            numar_problema = int(input("Numar problema:  "))
+            self.__serviceLab.sterge_problema(numar_problema)
+        except Exception as e:
+            print(e)
 
+
+    #id-ul trebuie sa ia numai numer pozitive
     def updateStudent(self):
-        id = int(input("ID Student:  "))
-        nume = input("Nume student: ")
-        grupa = int(input("Grupa student: "))
-        self.__serviceStudent.update_student(id,nume,grupa)
-        print("Studentul a fost update cu succes!")
+        try:
+            id = int(input("ID Student:  "))
+            nume = input("Nume student: ")
+            grupa = int(input("Grupa student: "))
+            self.__serviceStudent.update_student(id,nume,grupa)
+            print("Studentul a fost update cu succes!")
+        except Exception as e:
+            print(e)
 
     def updateLaborator(self):
-        numar_lab = int(input("Numar Laborator:  "))
-        numar_problema = int(input("Numar problema de laborator: "))
-        descriere = input("Descriere laborator: ")
-        deadline = input("Deadline laborator: ")
-        self.__serviceLab.update_problema(numar_lab,numar_problema,descriere,deadline)
-        print("Laboratorul a fost update cu succes!")
+        try:
+            numar_lab = int(input("Numar Laborator:  "))
+            numar_problema = int(input("Numar problema de laborator: "))
+            descriere = input("Descriere laborator: ")
+            deadline = input("Deadline laborator: ")
+            self.__serviceLab.update_problema(numar_lab,numar_problema,descriere,deadline)
+            print("Laboratorul a fost update cu succes!")
+        except Exception as e:
+            print(e)
 
     def CautaunStudent(self):
-        id_student = int(input("ID Student:  "))
-        student = self.__serviceStudent.cauta_student(id_student)
-        print(student)
+        try:
+            id_student = int(input("ID Student:  "))
+            student = self.__serviceStudent.cauta_student(id_student)
+            print(student)
+        except Exception as e:
+            print(e)
 
     def CautaunLaborator(self):
-        id_laborator = int(input("Numar laborator:  "))
-        laborator = self.__serviceLab.cauta_problema(id_laborator)
-        print(laborator)
+        try:
+            id_laborator = int(input("Numar laborator:  "))
+            laborator = self.__serviceLab.cauta_problema(id_laborator)
+            print(laborator)
+        except Exception as e:
+            print(e)
+
+
 
     def AdaugaNotare(self):
-        id = int(input("Introduceti id-ul studentului: "))
-        student_found = self.__serviceStudent.cauta_student(id)
-        numar_lab = int(input("Introduceti numarul laboratorului: "))
-        lab_found = self.__serviceLab.cauta_problema(numar_lab)
-        nota = int(input("Introduceti nota studentului: "))
-        self.__serviceNota.addNote(student_found,lab_found,nota)
+        try:
+            id = int(input("Introduceti id-ul studentului: "))
+            student_found = self.__serviceStudent.cauta_student(id)
+            numar_lab = int(input("Introduceti numarul laboratorului: "))
+            lab_found = self.__serviceLab.cauta_problema(numar_lab)
+            nota = int(input("Introduceti nota studentului: "))
+            self.__serviceNota.addNote(student_found,lab_found,nota)
+        except Exception as e:
+            print(e)
 
     def print_all_note(self):
         all_notes = self.__serviceNota.getAllNote()

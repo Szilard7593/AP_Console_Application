@@ -4,7 +4,7 @@ from Entitati.Nota import Nota
 from Entitati.ProblemaLaborator import ProblemaLaborator
 from Entitati.Student import Student
 
-
+#TODO Sa folosim assert-urile din unittest, nu cele antice
 class TestNota(TestCase):
     def test_get_nota(self):
         s = Student(1, "Mihai", 321)

@@ -1,3 +1,4 @@
+from logging import exception
 from unittest import TestCase
 
 from Entitati.Student import Student
@@ -42,3 +43,12 @@ class TestRepoStudent(TestCase):
         repo.deleteStudent(1)
         list = repo.getAllStudents()
         assert len(list) == 1
+
+    #TODO Teste la exceptii folosind unit test
+    def test_exceptie(self):
+        repo = RepoStudent()
+        student = Student(1, "Mihai", 321)
+        student2 = Student(1, "Daria", 123)
+        repo.addStudent(student)
+        repo.addStudent(student2)
+        self.assertRaises(Exception )

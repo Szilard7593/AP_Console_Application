@@ -30,7 +30,7 @@ class TestStudent(TestCase):
     def test_set_grupa(self):
         student = Student(1, "Mihai", 321)
         student.set_grupa(456)
-        assert student.get_grupa() == 456
+        self.assertTrue(student.get_grupa() == 456)
 
     def testExceptie(self):
         student = Student(-1, "Mihai", 321)

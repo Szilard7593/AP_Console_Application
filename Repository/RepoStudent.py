@@ -25,7 +25,6 @@ class RepoStudent:
         for student in self.__students:
             if student.get_student_id() == id:
                 self.__students.remove(student)
-        raise ValueError("Nu sa gasit syudentul")
 
 
 

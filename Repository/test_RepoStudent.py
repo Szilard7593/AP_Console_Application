@@ -40,8 +40,7 @@ class TestRepoStudent(TestCase):
         repo.addStudent(student)
         repo.addStudent(student2)
         repo.deleteStudent(1)
-        list = repo.getAllStudents()
-        assert len(list) == 1
+        self.assertEqual(repo.getAllStudents(), [student2])
 
     #TODO Teste la exceptii folosind unit test
     def test_exceptie(self):

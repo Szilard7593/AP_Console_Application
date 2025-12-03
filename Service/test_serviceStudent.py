@@ -13,8 +13,6 @@ class TestserviceStudent(TestCase):
         self.assertEqual(len(toti),1)
 
     def test_sterge_student(self):
-
-        #Incercam sa stergem ceva inexistent
         repo = RepoStudent()
         s2erviceStud = serviceStudent(repo)
         with self.assertRaises(ValueError):

@@ -6,7 +6,7 @@ class Nota:
     def __init__(self, student: Student, problema_lab: ProblemaLaborator, nota: int):
         self.__Student = student
         self.__ProblemaLaborator = problema_lab
-        if nota < 0 or nota > 10:
+        if int(nota) < 0 or int(nota) > 10:
             raise ValueError("Nota invalida!")
         self.__nota = nota
 

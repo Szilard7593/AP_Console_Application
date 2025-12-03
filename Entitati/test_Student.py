@@ -13,7 +13,6 @@ class TestStudent(TestCase):
     def test_get_nume(self):
         self.assertEqual(self.student.get_nume(), "Mihai")
 
-
     def test_get_grupa(self):
         self.assertEqual(self.student.get_grupa(), 321)
 
@@ -41,7 +40,7 @@ class TestStudent(TestCase):
     def testMedotaAntica(self):
         try:
             s = Student(-1, "Mihai", 321)
-            assert(False)
+            assert False
         except ValueError:
-            assert(True)
+            assert True
 

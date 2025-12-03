@@ -1,5 +1,4 @@
 
-
 class UI:
     def __init__(self,serviceStudent,serviceLab,serviceNota):
         self.__serviceStudent = serviceStudent
@@ -24,44 +23,47 @@ class UI:
        print("0.Exit")
 
     def run(self):
-        while True:
-            self.meniu()
-            optiune = int(input("Introduceti optiunea dorita: "))
-            
-            match optiune:
-                case 1:
-                    self.AdaugaunStudent()
-                case 2:
-                    self.AdaugaunLaborator()
-                case 3:
-                    self.AfiseazaStudenti()
-                case 4:
-                    self.AfiseazaLaboratori()
-                case 5:
-                    self.StergeunStudent()
-                case 6:
-                    self.stergeunLaborator()
-                case 7:
-                    self.updateStudent()
-                case 8:
-                    self.updateLaborator()
-                case 9:
-                    self.CautaunStudent()
-                case 10:
-                    self.CautaunLaborator()
-                case 11:
-                    self.AdaugaNotare()
-                case 12:
-                    self.print_all_note()
-                case 13:
-                    self.afiseaza_studenti_problema_alfabetic()
-                    self.afiseaza_studenti_problema_dupa_nota()
-                    self.afiseaza_studenti_media_sub_5()
-                case 0:
-                    exit(0)
-                case _:
-                    print("Optiune inexistenta!")
-                    continue
+        try:
+            while True:
+                self.meniu()
+                optiune = int(input("Introduceti optiunea dorita: "))
+
+                match optiune:
+                    case 1:
+                        self.AdaugaunStudent()
+                    case 2:
+                        self.AdaugaunLaborator()
+                    case 3:
+                        self.AfiseazaStudenti()
+                    case 4:
+                        self.AfiseazaLaboratori()
+                    case 5:
+                        self.StergeunStudent()
+                    case 6:
+                        self.stergeunLaborator()
+                    case 7:
+                        self.updateStudent()
+                    case 8:
+                        self.updateLaborator()
+                    case 9:
+                        self.CautaunStudent()
+                    case 10:
+                        self.CautaunLaborator()
+                    case 11:
+                        self.AdaugaNotare()
+                    case 12:
+                        self.print_all_note()
+                    case 13:
+                        self.afiseaza_studenti_problema_alfabetic()
+                        self.afiseaza_studenti_problema_dupa_nota()
+                        self.afiseaza_studenti_media_sub_5()
+                    case 0:
+                        exit(0)
+                    case _:
+                        print("Optiune inexistenta!")
+                        continue
+        except Exception as e:
+            print(e)
 
 
     def AdaugaunStudent(self):

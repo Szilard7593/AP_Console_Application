@@ -1,6 +1,7 @@
 import os.path
 from unittest import TestCase
 
+from Entitati.Nota import Nota
 from Entitati.ProblemaLaborator import ProblemaLaborator
 from Entitati.Student import Student
 from Repository.FileRepository import FileRepository_Student, FileRepository_ProblemaLab, FileRepository_Nota
@@ -49,6 +50,9 @@ class TestFileRepository_Student(TestCase):
         self.repo.addStudent(self.s2)
         self.assertEqual(len(self.repo.getAllStudents()), 2)
 
+        with self.assertRaises(ValueError):
+            self.repo.addStudent(self.s1)
+
     def test_delete_student(self):
         self.repo.addStudent(self.s1)
         self.repo.addStudent(self.s2)
@@ -83,9 +87,6 @@ class TestFileRepository_Student(TestCase):
         with self.assertRaises(ValueError):
             self.repo.updateStudent(1000,"da",21)
 
-
-
-
 class TestFileRepository_ProblemaLab(TestCase):
     def setUp(self):
         self.fisier = "test_lab.txt"
@@ -100,6 +101,47 @@ class TestFileRepository_ProblemaLab(TestCase):
     def tearDown(self):
         if os.path.exists(self.fisier):
             os.remove(self.fisier)
+
+    def test_save(self):
+        self.repo.addLab(self.l1)
+        with open(self.fisier, "r") as f:
+            content = f.read()
+
+        self.assertIn("ceva",content)
+
+    def test_add(self):
+        self.assertEqual(len(self.repo.getLabs()),0)
+        self.repo.addLab(self.l2)
+        self.assertEqual(len(self.repo.getLabs()),1)
+
+    def test_delete(self):
+        self.repo.addLab(self.l1)
+        self.repo.addLab(self.l2)
+
+        self.assertEqual(len(self.repo.getLabs()),2)
+
+        self.repo.deleteLab(2)
+        self.assertEqual(len(self.repo.getLabs()),1)
+        with open(self.fisier,"r") as f:
+            content = f.read()
+            self.assertNotIn("Alceva",content)
+            self.assertNotIn("07.12.2025",content)
+            self.assertIn("ceva",content)
+
+    def test_update(self):
+        self.repo.addLab(self.l1)
+
+        self.repo.updateLab(1,1,"Total diferit","maine")
+        with open(self.fisier, "r") as f:
+            content = f.read()
+            self.assertIn("Total diferit",content)
+            self.assertNotIn("ceva",content)
+
+    def test_find_by(self):
+        self.repo.addLab(self.l1)
+        self.repo.addLab(self.l2)
+
+        self.assertEqual(self.repo.find_by_id(2),self.l2)
 
 class TestFileRepository_Nota(TestCase):
     def setUp(self):
@@ -120,9 +162,21 @@ class TestFileRepository_Nota(TestCase):
         self.repoLab = FileRepository_ProblemaLab(self.fisierLab)
         self.repo = FileRepository_Nota(self.fisier,self.repoStud,self.repoLab)
 
+        self.s1 = Student(1,"Miha",213)
+        self.l1 = ProblemaLaborator(1,1,"Ceva", "Altceva")
+        self.n1 = Nota(self.s1,self.l1,10)
+
     def tearDown(self):
         if os.path.exists(self.fisier):
             os.remove(self.fisier)
             os.remove(self.fisierLab)
             os.remove(self.fisierStud)
 
+    def test_add(self):
+        self.assertEqual(len(self.repo.getall()),0)
+        self.repo.addNote(self.n1)
+        self.assertEqual(len(self.repo.getall()),1)
+
+        with open(self.fisier,"r") as f:
+            content = f.read()
+            self.assertIn("10",content)

@@ -83,7 +83,7 @@ class FileRepository_ProblemaLab(RepoLab):
         with open(self.__fisier, "w") as f:
             labs = super().getLabs()
             for lab in labs:
-                line = f"{lab.get_numar_lab()},{lab.get_numar_problema()},{lab.get_descriere()},{lab.get_deadline()}\n"
+                line = f"{lab.get_numar_laborator()},{lab.get_numar_problema()},{lab.get_descriere()},{lab.get_deadline()}\n"
                 f.write(line)
 
 
@@ -94,7 +94,6 @@ class FileRepository_ProblemaLab(RepoLab):
     def getLabs(self):
         return super().getLabs()
 
-    #TODO unexpected output
     def deleteLab(self, numar_laborator: int ):
         super().deleteLab(numar_laborator)
         self.overwrite()
@@ -106,7 +105,6 @@ class FileRepository_ProblemaLab(RepoLab):
     def find_by_id(self,numar_laborator: int):
         return super().find_by_id(numar_laborator)
 
-
 class FileRepository_Nota(RepoNota):
     def __init__(self, fisier: str, repo_student, repo_lab):
         super().__init__()
@@ -115,15 +113,24 @@ class FileRepository_Nota(RepoNota):
         self.__repo_lab = repo_lab
         self.load()
 
-    #TODO O medota in care putem converti string-ul din fisierul text in entitatea Nota
+    #Rezolvat#TODO O medota in care putem converti string-ul din fisierul text in entitatea Nota
     #initial avem nevoie sa convertim in Student si ProblemaLab ca sa cream entitatea corect
     def load(self):
-        pass
+        try:
+            with open(self.__fisier) as f:
+                for line in f:
+                    array = line.split(",")
+                    note = Nota(self.__repo_student.getStudentById(int(array[0])),self.__repo_lab.find_by_id(array[1]),int(array[2]))
+                    super().addNote(note)
+        except FileNotFoundError:
+            with open(self.__fisier, "w") as f:
+                pass
+
 
     def save(self, nota):
         with open(self.__fisier, "a") as f:
-            s_id = nota.get_student()
-            l_nr = nota.get_problema_lab()
+            s_id = nota.get_student().get_student_id()
+            l_nr = nota.get_problema_lab().get_numar_laborator()
             val = nota.get_nota()
 
             f.write(f"{s_id},{l_nr},{val}\n")

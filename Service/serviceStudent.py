@@ -1,6 +1,5 @@
 from Entitati.Student import Student
 
-
 class serviceStudent:
     def __init__(self,RepoStudent):
         self.__RepoStudent = RepoStudent

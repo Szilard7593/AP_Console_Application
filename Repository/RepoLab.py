@@ -28,7 +28,7 @@ class RepoLab:
 
     def find_by_id(self,numar_laborator: int):
         for lab in self.__labs:
-            if lab.get_numar_laborator() == numar_laborator:
+            if lab.get_numar_laborator() == int(numar_laborator):
                 return lab
         raise ValueError("Nu sa gasit")
 

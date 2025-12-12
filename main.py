@@ -1,10 +1,4 @@
-from Entitati.Nota import Nota
-from Entitati.ProblemaLaborator import ProblemaLaborator
-from Entitati.Student import Student
 from Repository.FileRepository import FileRepository_Student, FileRepository_ProblemaLab, FileRepository_Nota
-from Repository.RepoLab import RepoLab
-from Repository.RepoNota import RepoNota
-from Repository.RepoStudent import RepoStudent
 from Service.serviceLab import ServiceLab
 from Service.serviceNota import serviceNota
 from Service.serviceStudent import serviceStudent

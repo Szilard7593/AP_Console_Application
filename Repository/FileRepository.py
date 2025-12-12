@@ -16,9 +16,12 @@ class FileRepository_Student(RepoStudent):
         try:
             with open(self.__fisier) as f:
                 for line in f:
-                    array = line.split(",")
-                    student = Student(int(array[0]), array[1], int(array[2]))
-                    super().addStudent(student)
+                    array = line.strip().split(",")
+                    try:
+                        student = Student(int(array[0]), array[1], int(array[2]))
+                        super().addStudent(student)
+                    except ValueError as e:
+                        print(e)
         except FileNotFoundError:
             with open(self.__fisier) as f:
                 pass
@@ -66,13 +69,16 @@ class FileRepository_ProblemaLab(RepoLab):
         try:
             with open(self.__fisier) as f:
                 for line in f:
-                    array = line.split(",")
-                    problema = ProblemaLaborator(int(array[0]),int(array[1]),array[2],array[3])
-                    super().addLab(problema)
+                    array = line.strip().split(",")
+                    try:
+                        problema = ProblemaLaborator(int(array[0]),int(array[1]),array[2],array[3])
+                        super().addLab(problema)
+                    except ValueError as e:
+                        print(e)
         except FileNotFoundError:
             with open(self.__fisier,"w") as f:
                 pass
-        f.close()
+
 
     def save(self,problema):
         with open(self.__fisier,"a") as f:
@@ -114,12 +120,13 @@ class FileRepository_Nota(RepoNota):
         self.load()
 
     #Rezolvat#TODO O medota in care putem converti string-ul din fisierul text in entitatea Nota
+    #Rezolvat partial, nu orea se intelege clar ce ii in fisier
     #initial avem nevoie sa convertim in Student si ProblemaLab ca sa cream entitatea corect
     def load(self):
         try:
             with open(self.__fisier) as f:
                 for line in f:
-                    array = line.split(",")
+                    array = line.strip().split(",")
                     note = Nota(self.__repo_student.getStudentById(int(array[0])),self.__repo_lab.find_by_id(array[1]),int(array[2]))
                     super().addNote(note)
         except FileNotFoundError:

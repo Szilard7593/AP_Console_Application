@@ -20,8 +20,10 @@ class RepoStudent:
 
     #TODO De implementat in Java ca sa ved daca putem elimina
     #in timp ce o interam
+    #Problema era ca noi iteram peste o copie si schibam in lista originala
+    #FIXME iteram peste o copie, si modificam o copie
     def deleteStudent(self, id):
-        for student in self.__students[:]:
+        for student in self.__students[:]: #modificam pe copie
             if student.get_student_id() == id:
                 self.__students.remove(student)
                 return

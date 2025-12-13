@@ -20,6 +20,8 @@ class UI:
        print("11.Noteaza un student")
        print("12.Arata toate notele studentilor")
        print("13.Lista de studenți și notele lor la o problema de laborator data, ordonata: alfabetic după nume, după notă.")
+       print("14.Media pe an")
+      #print("15.Notele dintr-o grupa")
        print("0.Exit")
 
     def run(self):
@@ -57,6 +59,10 @@ class UI:
                         self.afiseaza_studenti_problema_alfabetic()
                         self.afiseaza_studenti_problema_dupa_nota()
                         self.afiseaza_studenti_media_sub_5()
+                    case 14:
+                        self.notaPESemestru()
+                   # case 15:
+                    #    self.noteGrupa()
                     case 0:
                         exit(0)
                     case _:
@@ -210,3 +216,10 @@ class UI:
             for item in rezultat:
                 print(f"{item['nume']}: Media = {item['media']}")
                 print(f"  Note: {item['note']}")
+
+    def notaPESemestru(self):
+        print(f"Media notelor este: {self.__serviceNota.notaPESemestru()}")
+
+
+
+

@@ -1,3 +1,6 @@
+from Repository.RepoStudent import RepoStudent
+
+
 class RepoNota:
     def __init__(self):
         self.__note = []
@@ -74,3 +77,12 @@ class RepoNota:
         rezultat = sorted(rezultat, key=lambda x: x['nume'])
 
         return rezultat
+
+    def mediaPeSemestr(self):
+        nota_pe_semestru = 0
+        for note in self.__note:
+            nota_pe_semestru += note.get_nota()
+
+        return nota_pe_semestru / len(self.__note)
+
+

@@ -24,6 +24,10 @@ class serviceNota:
     def studenti_media_sub_5(self):
         return self.__RepoNota.studenti_media_sub_5()
 
+    def notaPESemestru(self):
+        return self.__RepoNota.mediaPeSemestr()
+
+
 
 
 

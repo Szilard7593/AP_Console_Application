@@ -6,6 +6,9 @@ class RepoNota:
         self.__note = []
 
     def addNote(self, note):
+        for n in self.__note:
+            if n.get_problema_lab() == note.get_problema_lab():
+                raise ValueError("Un student nu poate avea mai multe note la o singura problema laborator")
         self.__note.append(note)
 
     def getNote(self):

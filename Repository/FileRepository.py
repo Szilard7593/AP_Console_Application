@@ -127,8 +127,11 @@ class FileRepository_Nota(RepoNota):
             with open(self.__fisier) as f:
                 for line in f:
                     array = line.strip().split(",")
-                    note = Nota(self.__repo_student.getStudentById(int(array[0])),self.__repo_lab.find_by_id(array[1]),int(array[2]))
-                    super().addNote(note)
+                    try:
+                        note = Nota(self.__repo_student.getStudentById(int(array[0])),self.__repo_lab.find_by_id(array[1]),int(array[2]))
+                        super().addNote(note)
+                    except ValueError as e:
+                        print(e)
         except FileNotFoundError:
             with open(self.__fisier, "w") as f:
                 pass

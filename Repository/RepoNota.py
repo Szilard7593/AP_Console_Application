@@ -35,6 +35,7 @@ class RepoNota:
 
         return rezultat
 
+
     def lista_studenti_problema_dupa_nota(self, numar_lab: int, numar_prob: int):
 
         note_problema = [

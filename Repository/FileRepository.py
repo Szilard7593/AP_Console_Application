@@ -1,3 +1,5 @@
+from colorama import Fore
+
 from Entitati.Nota import Nota
 from Entitati.ProblemaLaborator import ProblemaLaborator
 from Entitati.Student import Student
@@ -21,7 +23,8 @@ class FileRepository_Student(RepoStudent):
                         student = Student(int(array[0]), array[1], int(array[2]))
                         super().addStudent(student)
                     except ValueError as e:
-                        print(e)
+                        print(Fore.RED + f"{e}" + Fore.RESET)
+
         except FileNotFoundError:
             with open(self.__fisier) as f:
                 pass
@@ -74,7 +77,8 @@ class FileRepository_ProblemaLab(RepoLab):
                         problema = ProblemaLaborator(int(array[0]),int(array[1]),array[2],array[3])
                         super().addLab(problema)
                     except ValueError as e:
-                        print(e)
+                        print(Fore.RED + f"{e}" + Fore.RESET)
+
         except FileNotFoundError:
             with open(self.__fisier,"w") as f:
                 pass
@@ -131,7 +135,8 @@ class FileRepository_Nota(RepoNota):
                         note = Nota(self.__repo_student.getStudentById(int(array[0])),self.__repo_lab.find_by_id(array[1]),int(array[2]))
                         super().addNote(note)
                     except ValueError as e:
-                        print(e)
+                        print(Fore.RED + f"{e}" + Fore.RESET)
+
         except FileNotFoundError:
             with open(self.__fisier, "w") as f:
                 pass

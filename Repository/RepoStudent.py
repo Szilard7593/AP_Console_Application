@@ -1,3 +1,5 @@
+from colorama import Fore
+
 class RepoStudent:
     def __init__(self):
         self.__students = []

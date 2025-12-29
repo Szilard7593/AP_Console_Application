@@ -1,3 +1,5 @@
+from colorama import Fore
+
 
 class UI:
     def __init__(self,serviceStudent,serviceLab,serviceNota):
@@ -80,7 +82,8 @@ class UI:
             self.__serviceStudent.adauga_student(id,nume,grupa)
             print("Studentul a fost adaugat cu succes!")
         except Exception as e:
-            print(e)
+            print(Fore.RED + f"{e}" + Fore.RESET)
+
 
     def AdaugaunLaborator(self):
         try:
@@ -91,7 +94,7 @@ class UI:
             self.__serviceLab.adauga_problema(id_lab,problema_lab,descriere ,deadline)
             print("Laboratorul a fost adaugat cu succes!")
         except Exception as e:
-            print(e)
+            print(Fore.RED + f"{e}" + Fore.RESET)
 
     def AfiseazaStudenti(self):
         studenti = self.__serviceStudent.get_toti_studentii()
@@ -108,15 +111,14 @@ class UI:
             id = int(input("ID Student:  "))
             self.__serviceStudent.sterge_student(id)
         except Exception as e:
-            print(e)
-
+            print(Fore.RED + f"{e}")
+            print(Fore.RESET)
     def stergeunLaborator(self):
         try:
             numar_problema = int(input("Numar problema:  "))
             self.__serviceLab.sterge_problema(numar_problema)
         except Exception as e:
-            print(e)
-
+            print(Fore.RED + f"{e}" + Fore.RESET)
 
     #id-ul trebuie sa ia numai numer pozitive
     def updateStudent(self):
@@ -127,7 +129,7 @@ class UI:
             self.__serviceStudent.update_student(id,nume,grupa)
             print("Studentul a fost update cu succes!")
         except Exception as e:
-            print(e)
+            print(Fore.RED + f"{e}" + Fore.RESET)
 
     def updateLaborator(self):
         try:
@@ -138,7 +140,7 @@ class UI:
             self.__serviceLab.update_problema(numar_lab,numar_problema,descriere,deadline)
             print("Laboratorul a fost update cu succes!")
         except Exception as e:
-            print(e)
+            print(Fore.RED + f"{e}" + Fore.RESET)
 
     def CautaunStudent(self):
         try:
@@ -146,7 +148,7 @@ class UI:
             student = self.__serviceStudent.cauta_student(id_student)
             print(student)
         except Exception as e:
-            print(e)
+            print(Fore.RED + f"{e}" + Fore.RESET)
 
     def CautaunLaborator(self):
         try:
@@ -154,9 +156,7 @@ class UI:
             laborator = self.__serviceLab.cauta_problema(id_laborator)
             print(laborator)
         except Exception as e:
-            print(e)
-
-
+            print(Fore.RED + f"{e}" + Fore.RESET)
 
     def AdaugaNotare(self):
         try:
@@ -167,7 +167,7 @@ class UI:
             nota = int(input("Introduceti nota studentului: "))
             self.__serviceNota.addNote(student_found,lab_found,nota)
         except Exception as e:
-            print(e)
+            print(Fore.RED + f"{e}" + Fore.RESET)
 
     def print_all_note(self):
         all_notes = self.__serviceNota.getAllNote()

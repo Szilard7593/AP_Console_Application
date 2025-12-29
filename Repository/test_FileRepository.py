@@ -46,7 +46,6 @@ class TestFileRepository_Student(TestCase):
         self.assertEqual(len(all_students), 1)
         self.assertEqual(all_students[0].get_nume(), "Mihai")
 
-        # Test adding a second one
         self.repo.addStudent(self.s2)
         self.assertEqual(len(self.repo.getAllStudents()), 2)
 

@@ -71,8 +71,7 @@ class UI:
                         print("Optiune inexistenta!")
                         continue
         except Exception as e:
-            print(e)
-
+            print(Fore.RED + f"{e}" + Fore.RESET)
 
     def AdaugaunStudent(self):
         try:
@@ -111,8 +110,8 @@ class UI:
             id = int(input("ID Student:  "))
             self.__serviceStudent.sterge_student(id)
         except Exception as e:
-            print(Fore.RED + f"{e}")
-            print(Fore.RESET)
+            print(Fore.RED + f"{e}" + Fore.RESET)
+
     def stergeunLaborator(self):
         try:
             numar_problema = int(input("Numar problema:  "))

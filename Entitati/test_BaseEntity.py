@@ -19,3 +19,5 @@ class TestBaseEntity(TestCase):
     def test_str(self):
         self.assertEqual(str(self.b),str(1))
         self.assertEqual(str(self.b1),str(2))
+
+

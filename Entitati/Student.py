@@ -5,6 +5,8 @@ class Student(BaseEntity):
     def __init__(self,student_id:int , nume: str ,grupa: int):
         if int(student_id) < 0:
             raise ValueError("Student ID invalid!")
+        if (len(nume) < 1) or nume.isspace():
+            raise ValueError("Nume invalid!")
 
         super().__init__(student_id)
         self.__nume = nume

@@ -79,7 +79,7 @@ class UI:
             nume = input("Nume student: ")
             grupa = input("Grupa student: ")
             self.__serviceStudent.adauga_student(id,nume,grupa)
-            print("Studentul a fost adaugat cu succes!")
+            print(Fore.GREEN + "Studentul a fost adaugat cu succes!" + Fore.RESET)
         except Exception as e:
             print(Fore.RED + f"{e}" + Fore.RESET)
 
@@ -91,7 +91,7 @@ class UI:
             descriere = input("Descriere laborator: ")
             deadline = input("Deadline laborator: ")
             self.__serviceLab.adauga_problema(id_lab,problema_lab,descriere ,deadline)
-            print("Laboratorul a fost adaugat cu succes!")
+            print(Fore.GREEN + "Laboratorul a fost adaugat cu succes!" + Fore.RESET)
         except Exception as e:
             print(Fore.RED + f"{e}" + Fore.RESET)
 
@@ -126,7 +126,7 @@ class UI:
             nume = input("Nume student: ")
             grupa = int(input("Grupa student: "))
             self.__serviceStudent.update_student(id,nume,grupa)
-            print("Studentul a fost update cu succes!")
+            print(Fore.GREEN + "Studentul a fost update cu succes!" + Fore.RESET)
         except Exception as e:
             print(Fore.RED + f"{e}" + Fore.RESET)
 
@@ -137,7 +137,7 @@ class UI:
             descriere = input("Descriere laborator: ")
             deadline = input("Deadline laborator: ")
             self.__serviceLab.update_problema(numar_lab,numar_problema,descriere,deadline)
-            print("Laboratorul a fost update cu succes!")
+            print(Fore.GREEN + "Laboratorul a fost update cu succes!" + Fore.RESET)
         except Exception as e:
             print(Fore.RED + f"{e}" + Fore.RESET)
 
@@ -187,7 +187,7 @@ class UI:
                 for item in rezultat:
                     print(f"{item['nume']}: {item['nota']}")
         except ValueError:
-            print("Eroare: Introduceți numere valide!")
+            print(Fore.RED + "Eroare: Introduceți numere valide!" + Fore.RESET)
 
     def afiseaza_studenti_problema_dupa_nota(self):
         try:
